@@ -283,7 +283,7 @@
                 {
                     "name": "adminapi",
                     "contextPath": "/adminapi"
-                },
+                }
             ]
         }
     ],
