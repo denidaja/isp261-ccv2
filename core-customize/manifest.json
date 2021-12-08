@@ -120,9 +120,13 @@
                     "contextPath": "/backoffice"
                 },
                 {
-                  "name":"odata2webservices",
-                  "contextPath":"/odata2webservices"
-               }
+                  	"name":"odata2webservices",
+                  	"contextPath":"/odata2webservices"
+                },
+                {
+                	"name": "adminapi",
+                	"contextPath": "/adminapi"
+                }
             ]
         },
         {
@@ -275,7 +279,11 @@
                 {
                     "name": "personalizationsearchsmartedit",
                     "contextPath": "/personalizationsearchsmartedit"
-                }
+                },
+                {
+                    "name": "adminapi",
+                    "contextPath": "/adminapi"
+                },
             ]
         }
     ],
