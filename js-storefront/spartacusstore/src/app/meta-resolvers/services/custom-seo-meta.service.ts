@@ -16,6 +16,7 @@ export class CustomSeoMetaService extends SeoMetaService {
 
   protected set meta(meta: PageMeta) {
     super.meta = meta;
+    //@ts-ignore
     this.keywords = meta['keywords'];
     console.log('META:', meta);
   }

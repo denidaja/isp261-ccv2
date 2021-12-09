@@ -18,8 +18,7 @@ import { map } from 'rxjs/operators';
 })
 export class CEProductPageMetaResolver
   extends ProductPageMetaResolver
-  implements PageKeywordResolver
-{
+  implements PageKeywordResolver {
   constructor(
     protected routingService: RoutingService,
     protected productService: ProductService,
@@ -38,7 +37,7 @@ export class CEProductPageMetaResolver
     console.log('Custom MEta REsolvelsr');
   }
 
-  resolveKeywords(): Observable<string> {
+  resolveKeywords(): Observable<string | undefined> {
     return this.product$.pipe(map((product) => product.manufacturer));
   }
 
