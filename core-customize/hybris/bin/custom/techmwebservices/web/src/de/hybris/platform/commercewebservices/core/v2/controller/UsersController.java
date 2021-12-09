@@ -67,7 +67,7 @@ import io.swagger.annotations.ApiParam;
 public class UsersController extends BaseCommerceController
 {
 	private static final Logger LOG = LoggerFactory.getLogger(UsersController.class);
-	public static final String USER_MAPPER_CONFIG = "firstName,lastName,titleCode,currency(isocode),language(isocode),loyaltyPoint";
+	public static final String USER_MAPPER_CONFIG = "firstName,lastName,titleCode,currency(isocode),language(isocode),loyaltyPoint,orderNumber";
 
 	@Resource(name = "wsCustomerFacade")
 	private CustomerFacade customerFacade;
@@ -233,7 +233,10 @@ public class UsersController extends BaseCommerceController
 	public UserWsDTO getUser(@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
 	{
 		final CustomerData customerData = customerFacade.getCurrentCustomer();
-		return getDataMapper().map(customerData, UserWsDTO.class, fields);
+		UserWsDTO userWsDTOReturn = getDataMapper().map(customerData, UserWsDTO.class, fields);
+		userWsDTOReturn.setLoyaltyHistory(customerData.getLoyaltyHistory());
+		userWsDTOReturn.setLoyaltyPoint(customerData.getLoyaltyPoint());
+		return userWsDTOReturn;
 	}
 
 	/**

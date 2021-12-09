@@ -61,7 +61,7 @@
 			<attributes>
 				<attribute qualifier="orderNumber" type="java.lang.String">
 					<persistence type="property" />
-					<modifiers initial="true" optional="false" unique="true" />
+					<modifiers initial="true" optional="false" />
 				</attribute>
 				<attribute qualifier="loyalty" type="java.lang.Integer">
 					<persistence type="property" />

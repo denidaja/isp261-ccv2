@@ -29,6 +29,12 @@
 	<bean class="de.hybris.platform.commercefacades.user.data.CustomerData">
 		<property name="loyaltyPoint" type="Integer" />
 		<property name="orderNumber" type="String" />
+		<property name="loyaltyHistory" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.LoyaltyData>"/>
+	</bean>
+
+	<bean class="de.hybris.platform.commercefacades.user.data.LoyaltyData">
+		<property name="loyaltyPoint" type="Integer" />
+		<property name="orderNumber" type="String" />
 	</bean>
 
 </beans>
