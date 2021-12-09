@@ -1,0 +1,118 @@
+<cx-spinner class="overlay" *ngIf="isUpdating$ | async"> </cx-spinner>
+
+
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <a class="btn btn-block btn-secondary" style="flex: 0 0 calc(20% - 10px);background-color: #b8d3e6ad;color: black;"
+    (click)="doEdit()">
+    {{edit ? 'Cancel' : 'Edit'}}
+  </a>
+  <ng-container *ngIf="!edit">
+    <label style="margin: 25px 0px 12px 0px;">
+      <span style="font-weight: bold;">
+        Title:
+      </span>
+      <span>{{userData.title}}</span>
+    </label>
+
+    <label style="margin: 25px 0px 12px 0px;">
+      <span style="font-weight: bold;">
+        First Name:
+      </span>
+      <span>{{userData.firstName}}</span>
+    </label>
+
+    <label style="margin: 25px 0px 12px 0px;">
+      <span style="font-weight: bold;">
+        Last Name:
+      </span>
+      <span>{{userData.lastName}}</span>
+    </label>
+    <label style="margin: 25px 0px 12px 0px;">
+      <span style="font-weight: bold;">
+        Total Loyalty Points :
+      </span>
+      <span>{{userData.loyaltyPoint}}</span>
+      <span>
+        <a style="cursor: pointer; color: blue; margin-left: 21px;" (click)="doShowLoyaltyHistory()">
+          {{showLoyaltyHistory ? 'Hide' : 'Show'}}
+        </a>
+      </span>
+    </label>
+    <label style="margin: 25px 0px 12px 0px;" *ngIf="showLoyaltyHistory">
+      <table style="width: 100%;">
+        <thead>
+          <tr>
+            <td
+              style="border-style: solid; border-width: 2px; border-color: cornflowerblue; padding: 6px 0px 6px 18px; font-weight: bold; background-color: #6495ed6b;">
+              Order No.
+            </td>
+            <td
+              style="border-style: solid;border-width: 2px;border-color: cornflowerblue;padding: 6px 12px 6px 15px;font-weight: bold;background-color: #6495ed6b;text-align: right;">
+              Loyalty
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of loyaltyHistory">
+            <td
+              style="border-style: solid; border-width: 2px; border-color: cornflowerblue; padding: 6px 0px 6px 18px; ">
+              {{entry.orderNumber}}
+            </td>
+            <td
+              style="border-style: solid;border-width: 2px;border-color: cornflowerblue;padding: 6px 12px 6px 15px;text-align: right;">
+              {{entry.loyaltyPoint}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </label>
+  </ng-container>
+  <ng-container *ngIf="edit">
+    <label>
+      <span class="label-content">{{
+        'updateProfileForm.title' | cxTranslate
+        }}</span>
+      <select formControlName="titleCode" class="form-control">
+        <option value="">{{ 'updateProfileForm.none' | cxTranslate }}</option>
+        <option *ngFor="let title of titles$ | async" [value]="title.code">
+          {{ title.name }}
+        </option>
+      </select>
+    </label>
+    <label>
+      <span class="label-content">{{
+        'updateProfileForm.firstName.label' | cxTranslate
+        }}</span>
+      <input aria-required="true" type="text" class="form-control" name="firstName" placeholder="{{
+        'updateProfileForm.firstName.placeholder' | cxTranslate
+      }}" formControlName="firstName" />
+      <cx-form-errors aria-live="assertive" aria-atomic="true" [control]="form.get('firstName')"></cx-form-errors>
+    </label>
+
+    <label>
+      <span class="label-content">{{
+        'updateProfileForm.lastName.label' | cxTranslate
+        }}</span>
+      <input aria-required="true" type="text" class="form-control" name="lastName"
+        placeholder="{{ 'updateProfileForm.lastName.placeholder' | cxTranslate }}" formControlName="lastName" />
+      <cx-form-errors aria-live="assertive" aria-atomic="true" [control]="form.get('lastName')"></cx-form-errors>
+    </label>
+
+    <label>
+      <span class="label-content">{{
+        'updateProfileForm.customerId' | cxTranslate
+        }}</span>
+      <input aria-required="true" type="text" class="form-control" name="customerId" formControlName="customerId"
+        readonly />
+      <cx-form-errors aria-live="assertive" aria-atomic="true" [control]="form.get('lastName')"></cx-form-errors>
+    </label>
+
+    <a class="btn btn-block btn-secondary" [routerLink]="{ cxRoute: 'home' } | cxUrl">
+      {{ 'common.cancel' | cxTranslate }}
+    </a>
+
+    <button class="btn btn-block btn-primary" [disabled]="form.disabled">
+      {{ 'common.save' | cxTranslate }}
+    </button>
+  </ng-container>
+</form>
