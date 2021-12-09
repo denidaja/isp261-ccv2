@@ -79,7 +79,10 @@
 	      	            !execution(* getPK(..))" />  	            
 	       <aop:pointcut id="profiledMethods" expression="execution(* *(..))" />	
 	  -->
-	
-			
+
+	<alias name="defaulttechmCustomerFacade" alias="customerFacade"/>
+	<bean id="defaulttechmCustomerFacade" class="com.acme.infra.demo.customer.DefaultTechMCustomerFacade"	parent="defaultCustomerFacade">
+
+	</bean>
 			
 </beans>

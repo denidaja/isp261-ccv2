@@ -18,7 +18,16 @@
 
 <items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:noNamespaceSchemaLocation="items.xsd">
-
+	<relations>
+		<relation code="CustomerToLoyaltyRel" localized="false" generate="true" autocreate="true">
+			<sourceElement type="Customer" qualifier="customer" cardinality="one">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement type="Loyalty" qualifier="loyalty" cardinality="many" ordered="true" collectiontype="list">
+				<modifiers read="true" write="true" search="true" optional="true" partof="true" />
+			</targetElement>
+		</relation>
+	</relations>
 	<itemtypes>
 <!--
 		<itemtype generate="true"
@@ -46,5 +55,32 @@
 			</attributes>
 		</itemtype>
 -->
+
+		<itemtype code="Loyalty" autocreate="true" generate="true" extends="GenericItem">
+			<deployment table="Loyalty" typecode="12000" />
+			<attributes>
+				<attribute qualifier="orderNumber" type="java.lang.String">
+					<persistence type="property" />
+					<modifiers initial="true" optional="false" unique="true" />
+				</attribute>
+				<attribute qualifier="loyalty" type="java.lang.Integer">
+					<persistence type="property" />
+					<modifiers optional="false" />
+					<defaultvalue>0</defaultvalue>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="Customer" autocreate="false" generate="false">
+			<description>Extending Customer type with additional attributes.</description>
+			<attributes>
+				<attribute qualifier="loyaltyPoint" type="java.lang.Integer">
+					<modifiers read="true" write="true" initial="false" optional="true" />
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+
+
 	</itemtypes>
 </items>

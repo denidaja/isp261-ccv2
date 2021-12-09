@@ -22,7 +22,7 @@
     <extension name='electronicsstore' />
     <extension name='multicountrysampledataaddon' />
     <extension name='pcmbackofficesamplesaddon' />
-    <extension name='classificationgroupsservices' />
+
     <extension name='patchesbackoffice' />
     <extension name='patches' />
     <extension name='pcmbackoffice' />
@@ -39,7 +39,7 @@
     <extension name='commercefacades' />
     <extension name='commerceservices' />
     <extension name='commerceservicesbackoffice' />
-    <extension name='commercewebservices' />
+
     <extension name='commercewebservicescommons' />
     <extension name='commercewebservicestests' />
     <extension name='yocc' />
@@ -86,8 +86,8 @@
     <extension name='outboundservices' />
     <extension name='outboundsync' />
     <extension name='outboundsyncbackoffice' />
-    <extension name='webhookbackoffice' />
-    <extension name='webhookservices' />
+
+
     <extension name='messagecentercsfacades' />
     <extension name='messagecentercsocc' />
     <extension name='messagecentercsservices' />
@@ -180,8 +180,10 @@
 
 <!-- Sample Extensions -->
     <extension name='spartacussampledata' />
-<!--<extension name='kiwi' />
-    <extension name='tiger'/> -->
+
+<extension dir="${HYBRIS_BIN_DIR}/custom/techmwebservices"/>
+<!--<extension name='kiwi' /> -->
+    <extension name='tiger'/>
 
 <!-- If you want to test Cloud Hot Folders locally download the extensions from https://launchpad.support.sap.com/#/notes/2817992 and uncomment the following -->
     <!--<extension name='azurecloudhotfolder' />
