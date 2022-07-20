@@ -180,6 +180,7 @@
 
 <!-- Sample Extensions -->
     <extension name='spartacussampledata' />
+    <extension name='democmstypeaddon' />
 <!--<extension name='kiwi' />
     <extension name='tiger'/> -->
 
